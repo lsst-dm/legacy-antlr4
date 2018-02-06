@@ -1,20 +1,26 @@
 TAP_PACKAGE=1
 
+PKGDIR=$PWD
+BUILDDIR=$PWD/../antlr4-build
+
+config()
+{
+    rm -rf ${BUILDDIR}
+    mkdir ${BUILDDIR}
+    cd ${BUILDDIR}
+    cmake ${PKGDIR}/runtime/Cpp/ -DCMAKE_INSTALL_PREFIX=${PREFIX}
+}
 
 build()
 {
-    cd runtime/Cpp && mkdir build && mkdir run && cd build
-    cmake ..
-    make
+    cd ${BUILDDIR}
+    default_build
 }
 
 install()
 {
-    default_install
-
-    cd runtime/Cpp/build
-    DESTDIR=$PREFIX make install
-    msg "Moving $PREFIX/usr/local/* to $PREFIX/ and deleting $PREFIX/usr"
-    mv $PREFIX/usr/local/* $PREFIX/
-    rm -r $PREFIX/usr
+    cd ${BUILDDIR}
+    make -j$NJOBS install
+    cd ${PKGDIR}
+    install_ups
 }
