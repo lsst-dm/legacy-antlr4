@@ -1,4 +1,4 @@
 envPrepend(LD_LIBRARY_PATH, ${PRODUCT_DIR}/lib)
 envPrepend(DYLD_LIBRARY_PATH, ${PRODUCT_DIR}/lib)
 envPrepend(LSST_LIBRARY_PATH, ${PRODUCT_DIR}/lib)
-envPrepend(PATH, ${PRODUCT_DIR}/include/antlr4-runtime)
+envPrepend(PATH, ${PRODUCT_DIR}/bin)
