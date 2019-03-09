@@ -17,7 +17,7 @@ config()
     rm -rf ${BUILDDIR}
     mkdir ${BUILDDIR}
     cd ${BUILDDIR}
-    cmake .. -DCMAKE_INSTALL_PREFIX=${PREFIX}
+    cmake .. -DWITH_LIBCXX=off -DCMAKE_INSTALL_PREFIX=${PREFIX}
 }
 
 build()
